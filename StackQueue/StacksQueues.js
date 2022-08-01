@@ -26,11 +26,11 @@ class Stack {
       this.bottom = newNode;
     } else {
       // 1- catch all Nodes
-      const currentTopNode = this.top;
+      const oldTopNode = this.top;
       // 2- make top = newNode...
       this.top = newNode;
       // 3- attach holded Nodes to new top
-      this.top.next = currentTopNode;
+      this.top.next = oldTopNode;
     }
     this.length++;
     return this;
@@ -38,6 +38,7 @@ class Stack {
   pop() {
     if (!this.top) return null;
     if (this.top === this.bottom) return this.bottom = null;
+    // make top's next is lower than or below current top
     this.top = this.top.next;
     this.length--;
     return this;

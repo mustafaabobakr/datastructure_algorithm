@@ -71,41 +71,39 @@ class DoublyLinkedList {
     newNode.prev = nodeBefore;
     newNode.next = nodeAfter;
     nodeAfter.prev = newNode;
-
     this.length++;
     return this;
   }
-  remove(index) {
-    // if index <= 0 head
+  remove(index) { // 3
     if (index <= 0) {
       this.length--;
       return this.head = this.head.next;
     }
-    // if last idex >= Node
     if (index >= this.length) {
-      // get (last item -1) and make is's .next = null
-      const beforeLastNode = this.findNode(this.length - 2);
+      const beforeLastNode = this.tail.prev;
       this.length--;
       return beforeLastNode.next = null;
     }
-    const nodeBefore = this.findNode(index - 1);
-    const unwantedNode = nodeBefore.next;
-    nodeBefore.next = unwantedNode.next;
+    const nodeBefore = this.findNode(index - 1); // 2
+    const unwantedNode = nodeBefore.next; // 3
+    console.log('unwantedNode:', unwantedNode);
+    nodeBefore.next = unwantedNode.next; // 2 -> 4
     this.length--;
     return this;
   }
 }
 
 const myLink = new DoublyLinkedList(2);
-myLink.append(3);
 myLink.prepend(1);
-myLink.insert(4, 999);
+myLink.append(3);
+myLink.append(5);
+myLink.insert(3, 4);
 console.log('insert', myLink);
-console.log('printList: ', myLink.printList());
+console.log('insert printList: ', myLink.printList());
 
 console.log('====================================');
-myLink.remove(3);
+myLink.remove(99);
 console.log('remove', myLink);
-console.log('printList: ', myLink.printList());
+console.log('remove printList: ', myLink.printList());
 console.log('====================================');
 

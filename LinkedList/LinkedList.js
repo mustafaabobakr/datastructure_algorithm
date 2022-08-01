@@ -20,11 +20,11 @@ class LinkedList {
     this.tail = this.head;
     this.length = 1;
   }
-  static findNode(index) {
+  findNode(index) {
     let counter = 0;
     let currentNode = this.head;
     while (counter !== index) {
-      currentNode = head.next;
+      currentNode = currentNode.next;
       counter++;
     }
     return currentNode;
@@ -106,3 +106,16 @@ class LinkedList {
   }
   //
 }
+
+const link = new LinkedList(1);
+link.append(2)
+link.append(3)
+link.append(4)
+link.append(5)
+link.append(6)
+link.append(7)
+link.insert(5,5.5)
+
+
+
+console.log('link:', link)
